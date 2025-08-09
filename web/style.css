@@ -1,0 +1,278 @@
+/* Reset dan base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: white;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Background decorative ellipses */
+body::before {
+    content: '';
+    position: fixed;
+    top: -200px;
+    left: -200px;
+    width: 600px;
+    height: 600px;
+    background: #FFB649;
+    opacity: 0.4;
+    border-radius: 50%;
+    filter: blur(300px);
+    z-index: -1;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    bottom: -200px;
+    right: -200px;
+    width: 600px;
+    height: 600px;
+    background: #004BBB;
+    opacity: 0.4;
+    border-radius: 50%;
+    filter: blur(300px);
+    z-index: -1;
+}
+
+/* Vector decorations */
+.vector-left {
+    position: fixed;
+    bottom: -10px;
+    left: -10px;
+    z-index: 1;
+}
+
+.vector-left img {
+    width: 300px;
+    height: auto;
+}
+
+.vector-right {
+    position: fixed;
+    top: -10px;
+    right: -10px;
+    z-index: 1;
+}
+
+.vector-right img {
+    width: 250px;
+    height: auto;
+}
+
+/* Container utama */
+.container {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 20px 0;
+}
+
+.logo-container {
+    display: inline-block;
+}
+
+.logo {
+    height: 50px;
+    width: auto;
+}
+
+/* Layout utama */
+.main-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+/* Content boxes */
+.content-box {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 30px;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.content-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #12C2E9, #C471ED, #F64F59);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.content-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.15);
+}
+
+.content-box:hover::before {
+    opacity: 1;
+}
+
+/* Main content box */
+.main-box {
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Sidebar */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sidebar-box {
+    min-height: 120px;
+}
+
+.sidebar-box.large {
+    min-height: 200px;
+}
+
+/* Content placeholders */
+.content-placeholder {
+    color: #333;
+    text-align: center;
+}
+
+.content-placeholder h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    background: linear-gradient(45deg, #12C2E9, #C471ED, #F64F59);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+}
+
+.content-placeholder h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: #444;
+    font-weight: 600;
+}
+
+.content-placeholder p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #666;
+}
+
+.content-placeholder.small h3 {
+    font-size: 1.2rem;
+}
+
+.content-placeholder.small p {
+    font-size: 0.95rem;
+}
+
+.content-placeholder.medium p {
+    font-size: 1rem;
+    text-align: left;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .main-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .container {
+        padding: 15px;
+    }
+    
+    .vector-left img,
+    .vector-right img {
+        width: 200px;
+    }
+    
+    .logo {
+        height: 60px;
+    }
+    
+    .content-placeholder h1 {
+        font-size: 2rem;
+    }
+    
+    .main-box {
+        min-height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .vector-left,
+    .vector-right {
+        display: none;
+    }
+    
+    .content-box {
+        padding: 20px;
+    }
+    
+    .content-placeholder h1 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Animasi loading */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.content-box {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.main-box {
+    animation-delay: 0.2s;
+}
+
+.sidebar-box:nth-child(1) {
+    animation-delay: 0.4s;
+}
+
+.sidebar-box:nth-child(2) {
+    animation-delay: 0.6s;
+}
+
+.sidebar-box:nth-child(3) {
+    animation-delay: 0.8s;
+}
