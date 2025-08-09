@@ -518,9 +518,9 @@ class EmotionDetector {
             const emotionData = this.emotionMap[face.emotion] || { icon: '❓', color: '#00ff88' };
             const confidencePercent = Math.round(face.confidence * 100);
             
-            // Calculate position and size
+            // Calculate position and size dengan offset adjustment
             const boxX = face.x * scaleX;
-            const boxY = face.y * scaleY;
+            const boxY = (face.y * scaleY) + 70; // Offset 35px ke bawah (diperbesar dari 15px)
             const boxWidth = face.width * scaleX;
             const boxHeight = face.height * scaleY;
             
