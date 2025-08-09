@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neo - IT For The Future</title>
+    <title>Neo Telemetri</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -23,8 +23,87 @@
         <header class="header">
             <div class="logo-container">
                 <img src="assets/Logo Neo.svg" alt="Neo Logo" class="logo">
+                <!-- Animated dots around logo -->
+                <div class="dots-animation">
+                    <div class="dot dot-1"></div>
+                    <div class="dot dot-2"></div>
+                    <div class="dot dot-3"></div>
+                    <div class="dot dot-4"></div>
+                    <div class="dot dot-5"></div>
+                    <div class="dot dot-6"></div>
+                    <div class="dot dot-7"></div>
+                    <div class="dot dot-8"></div>
+                </div>
             </div>
         </header>
+
+        <!-- Main content area -->
+        <main class="main-content">
+            <!-- Camera and emotion detection area -->
+            <div class="content-box main-box">
+                <div class="emotion-detector">
+                    <div class="camera-container">
+                        <video id="videoElement" autoplay muted playsinline></video>
+                        <canvas id="canvasElement" style="display: none;"></canvas>
+                        <div class="face-overlay" id="faceOverlay"></div>
+                        <div class="camera-status" id="cameraStatus">
+                            <i class="status-icon">📷</i>
+                            <span>Mengaktifkan kamera...</span>
+                        </div>
+                    </div>
+                    
+                    <div class="controls">
+                        <button id="startBtn" class="btn btn-primary">
+                            <span class="btn-icon">▶️</span>
+                            Mulai Deteksi
+                        </button>
+                        <button id="stopBtn" class="btn btn-secondary" disabled>
+                            <span class="btn-icon">⏸️</span>
+                            Berhenti
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar dengan hasil dan informasi -->
+            <div class="sidebar">
+                <!-- Hasil deteksi emosi -->
+                <div class="content-box sidebar-box">
+                    <div class="emotion-result">
+                        <h3>Hasil Deteksi</h3>
+                        <div class="emotion-display" id="emotionDisplay">
+                            <div class="emotion-icon">😐</div>
+                            <div class="emotion-text">Menunggu deteksi...</div>
+                            <div class="confidence-bar">
+                                <div class="confidence-fill" style="width: 0%"></div>
+                            </div>
+                            <div class="confidence-text">Akurasi: 0%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Statistik deteksi -->
+                <div class="content-box sidebar-box">
+                    <div class="detection-stats">
+                        <h3>Statistik</h3>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <span class="stat-label">Total Deteksi</span>
+                                <span class="stat-value" id="totalDetections">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Wajah Terdeteksi</span>
+                                <span class="stat-value" id="facesDetected">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Akurasi Rata-rata</span>
+                                <span class="stat-value" id="avgAccuracy">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
 
     <script src="script.js"></script>
